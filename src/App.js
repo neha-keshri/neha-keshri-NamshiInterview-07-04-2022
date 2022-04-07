@@ -12,10 +12,8 @@ function App() {
           <div className="row mt-3">
             {array?.map((_, index) => (
               <div
+                key={index}
                 className="col-3"
-                style={{
-                  backgroundColor: checked.includes(index) ? "red" : "blue",
-                }}
                 onClick={() => {
                   let temp = [...checked];
                   if (temp.length === 2) {
@@ -24,7 +22,14 @@ function App() {
                   if (!temp.includes(index)) setChecked([...temp, index]);
                 }}
               >
-                <div>Box {index + 1}</div>
+                <div
+                  className="box-view"
+                  style={{
+                    backgroundColor: checked.includes(index) ? "red" : "blue",
+                  }}
+                >
+                  {checked.includes(index) ? `Box ${index + 1}` : ""}
+                </div>
               </div>
             ))}
           </div>
