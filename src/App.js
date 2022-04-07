@@ -3,6 +3,7 @@ import "./App.css";
 
 function App() {
   const [checked, setChecked] = useState([]);
+  const [checkArr, setArr] = useState([]);
   let array = Array.from({ length: 16 }, () => 0);
 
   return (
@@ -20,6 +21,7 @@ function App() {
                     temp.shift();
                   }
                   if (!temp.includes(index)) setChecked([...temp, index]);
+                  if (!checkArr.includes(index)) setArr([...checkArr, index]);
                 }}
               >
                 <div
@@ -28,7 +30,9 @@ function App() {
                     backgroundColor: checked.includes(index) ? "red" : "blue",
                   }}
                 >
-                  {checked.includes(index) ? `Box ${index + 1}` : ""}
+                  {checkArr.length > 0 &&
+                    checkArr.includes(index) &&
+                    `Box ${checkArr.indexOf(index) + 1}`}
                 </div>
               </div>
             ))}
